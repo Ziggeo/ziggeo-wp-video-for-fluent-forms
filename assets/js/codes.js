@@ -1,3 +1,16 @@
+//
+// INDEX
+//********
+// 1. Helper functions
+//		* jQuery.ready()
+//		* ziggeofluentformsIsOfForm()
+
+
+
+/////////////////////////////////////////////////
+// 1. HELPER FUNCTIONS                         //
+/////////////////////////////////////////////////
+
 jQuery( document ).ready(function() {
 
 	//Check if the ziggeo_app was defined
