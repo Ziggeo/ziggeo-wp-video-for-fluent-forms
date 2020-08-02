@@ -66,7 +66,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.0 =
+= 1.1 =
 * Added Custom tags handling. Comma separated strings accepted.
 
 == Changelog ==
