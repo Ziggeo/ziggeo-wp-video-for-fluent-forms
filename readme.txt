@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
 Tested up to: 5.4.2
-Stable tag: 1.0
+Stable tag: 1.1
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -67,7 +67,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 == Upgrade Notice ==
 
 = 1.0 =
-Initial commit
+* Added Custom tags handling. Comma separated strings accepted.
 
 == Changelog ==
 

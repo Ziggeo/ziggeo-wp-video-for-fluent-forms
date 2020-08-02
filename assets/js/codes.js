@@ -36,6 +36,39 @@ jQuery( document ).ready(function() {
 		else {
 			element.value = "[ziggeoplayer]" + embedding_object.get("video") + "[/ziggeoplayer]"
 		}
+
+		//Get tags
+		var tags = embedding.getAttribute('data-custom-tags');
+
+		if(tags) {
+			var _tags = [];
+			tags = tags.split(',');
+
+			for(i = 0, c = tags.length; i < c; i++) {
+				try {
+					var value = document.getElementById(tags[i]).value;
+
+					if(value.trim() !== '') {
+						_tags.push(value);
+					}
+				}
+				catch(err) {
+					console.log(err);
+				}
+			}
+
+			if(_tags.length > 0) {
+
+				if(embedding_object.get('tags') !== '' && embedding_object.get('tags') !== null) {
+					_tags.concat(embedding_object.get('tags'));
+				}
+
+				//Create tags for the video
+				ZiggeoApi.Videos.update(embedding_object.get("video"), {
+					tags: _tags
+				});
+			}
+		}
 	});
 
 	//Handling video players
