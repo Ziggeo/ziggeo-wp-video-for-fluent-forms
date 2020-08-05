@@ -21,7 +21,9 @@ function ziggeofluentforms_admin() {
 add_action('wp_enqueue_scripts', "ziggeofluentforms_global");
 //add_action('admin_enqueue_scripts', "ziggeofluentforms_admin");
 //Non standard however needed ;)
-add_action('wp_print_scripts', "ziggeofluentforms_admin", 20);
+if(is_admin()) {
+	add_action('wp_print_scripts', "ziggeofluentforms_admin", 20);
+}
 
 
 ?>
