@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
 Tested up to: 5.4.2
-Stable tag: 1.1
+Stable tag: 1.2
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -55,6 +55,27 @@ Integration happens within your website. All the data you gather will still be a
 
 As always we will host multimedia that is captured within your Ziggeo account and link to the same will be used as a submitted value on your form.
 
+= How to use Dynamic Custom Data =
+
+Ziggeo internally supports the ability of adding custom data to your videos. This can be anything as long as it is provided as valid JSON field. Now with form builders you might want to add custom data based on the data in the fields as well. To do this, we bring you dynamic custom data field.
+
+* Please note that this field should not be used in combination with the custom data. You should use either `Custom Data` or `Dynamic Custom Data`.
+
+The way you would set it up is by using key:field_id. For example if you want your JSON to be formed as:
+
+[javascript]
+{
+	"first_name": "Mike",
+	"last_name": "Wazowski"
+}
+[/javascript]
+
+and let's say that your first name has `<input id="ff_1_names_first_name_" ...>` and last name has `<input id="ff_1_names_last_name_" ...>`. It means that we need `ff_1_names_first_name_` and `ff_1_names_last_name_` to get those values. So our field can be set as:
+
+`first_name:ff_1_names_first_name_,last_name:ff_1_names_last_name_`
+
+As you save your recorder field it will remember this and try to find the values. If the fields with ID are not found, the value will be saved as "" (empty string)
+
 = How can I get some support =
 
 We provide active support to all that have any questions or need any assistance with our plugin or our service.
@@ -66,10 +87,14 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.1 =
-* Added Custom tags handling. Comma separated strings accepted.
+= 1.2 =
+* Added dynamic custom data handling. Allows you to pick up other fields on the form as your custom data.
+* Revised the verified event firing, so that it is possible for anyone to subscribe to the same and run their code which are specific to the verified event firing on Fluent Forms. This is possible through `ziggeofluentforms_verified` JavaScript hook.
 
 == Changelog ==
+
+= 1.1 =
+* Added Custom tags handling. Comma separated strings accepted.
 
 = 1.0 =
 Initial commit

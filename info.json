@@ -8,13 +8,13 @@
 	"plugin": {
 		"name": "ziggeo-video-for-fluent-forms",
 		"title": "Ziggeo Video for Fluent Forms",
-		"version": "1.1",
+		"version": "1.2",
 		"author": "Ziggeo",
 		"logo": "https://raw.githubusercontent.com/Ziggeo/ziggeo-wp-video-for-fluent-forms/master/assets/images/logo.png",
 		"contributors": "oliverfriedmann, baned, carloscsz409",
 		"tags": "ziggeo, video, video field, fluent forms, video submission",
 		"description": "This plugin is providing an easy and simple way for you to add Ziggeo to your Fluent Forms forms through special Ziggeo fields.",
-		"highlight": "Custom Tags support",
+		"highlight": "Custom Tags and dynamic custom data support",
 		"info_url": "https://raw.githubusercontent.com/Ziggeo/ziggeo-wp-video-for-fluent-forms/master/info.json",
 		"addon_url": "",
 		"docs_url": ""

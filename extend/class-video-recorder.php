@@ -54,12 +54,13 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 				'meta_profile'             => '',
 				'client_auth'              => '',
 				'server_auth'              => '',
-				'ff_custom_tags'           => '',
 
 				'video_title'              => '',
 				'video_description'        => '',
 				'video_tags'               => '',
 				'custom_data'              => '',
+				'ff_custom_tags'           => '',
+				'ff_custom_data'           => '',
 
 				'label_placement'          => '',
 				'help_message'             => '',
@@ -246,12 +247,13 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			'meta_profile',
 			'client_auth',
 			'server_auth',
-			'ff_custom_tags',
 
 			'video_title',
 			'video_description',
 			'video_tags' ,
-			'custom_data'
+			'custom_data',
+			'ff_custom_tags',
+			'ff_custom_data'
 		];
 	}
 
@@ -311,10 +313,6 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 				'template'  => 'inputText',
 				'label'	    => 'Server Auth Token'
 			],
-			'ff_custom_tags'           => [
-				'template'  => 'inputText',
-				'label'	    => 'Custom Tags'
-			],
 
 			//Video data
 			'video_title'              => [
@@ -333,6 +331,16 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 				'template'  => 'inputText',
 				'label'	    => 'Custom Data to be added to video',
 				'help_text' => 'This has to be data in proper JSON format, or it will be rejected.'
+			],
+			'ff_custom_tags'           => [
+				'template'  => 'inputText',
+				'label'	    => 'Custom Tags',
+				'help_text' => 'Add tags based on the fields on your form. Use the HTML ID of the field. Separate multiple IDs with comma'
+			],
+			'ff_custom_data'           => [
+				'template'  => 'inputText',
+				'label'	    => 'Dynamic Custom Data',
+				'help_text' => 'Add custom data based on the example in plugin\'s readme/info. It should be provided as "key": field_ID. Multiple fields are separated by comma'
 			]
 		];
 	}
@@ -369,6 +377,11 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			$custom_tags = $settings['ff_custom_tags'];
 		}
 
+		$custom_data = '';
+		if(isset($settings['ff_custom_data'])) {
+			$custom_data = $settings['ff_custom_data'];
+		}
+
 		$field_id = $data['attributes']['id'];
 
 		$element_markup = '<input type="hidden" id="' . $field_id . '" ' . $this->buildAttributes($data['attributes'], $form) . ' >';
@@ -377,6 +390,7 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			' data-id="' . $field_id . '"' .
 			' data-is-ff="true"' . 
 			' data-custom-tags="' . $custom_tags . '" ' .
+			' data-custom-data="' . $custom_data . '" ' .
 			ziggeofluentforms_get_recorder_code($settings) .
 			'></ziggeorecorder>';
 
