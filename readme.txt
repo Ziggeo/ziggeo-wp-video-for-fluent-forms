@@ -91,6 +91,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 * Added dynamic custom data handling. Allows you to pick up other fields on the form as your custom data.
 * Revised the verified event firing, so that it is possible for anyone to subscribe to the same and run their code which are specific to the verified event firing on Fluent Forms. This is possible through `ziggeofluentforms_verified` JavaScript hook.
 * Admin scripts are now loaded only on admin.
+* Added a fix where the Ziggeo Fields would be shown even when editing the field properties. Now they are no longer shown in such case and only shown when list of fields is shown.
 
 == Changelog ==
 

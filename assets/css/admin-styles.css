@@ -1,0 +1,10 @@
+
+
+/* Fix for having the Ziggeo Fields shown only when fields are shown and not when fields are edited */
+#ziggeo-fluentforms-editor-section {
+    display: none;
+}
+
+.sidebar_elements_wrapper #ziggeo-fluentforms-editor-section {
+    display: block;
+}

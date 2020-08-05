@@ -14,6 +14,9 @@ function ziggeofluentforms_admin() {
 
 	ziggeofluentforms_global();
 
+	wp_register_style('ziggeofluentforms-admincss', ZIGGEOFLUENTFORMS_ROOT_URL . 'assets/css/admin-styles.css');
+	wp_enqueue_style('ziggeofluentforms-admincss');
+
 	wp_register_script('ziggeofluentforms-adminjs', ZIGGEOFLUENTFORMS_ROOT_URL . 'assets/js/admin-codes.js', array());
 	wp_enqueue_script('ziggeofluentforms-adminjs');
 }
