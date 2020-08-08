@@ -3,67 +3,85 @@
 //Checking if WP is running or if this is a direct call..
 defined('ABSPATH') or die();
 
+function ziggeofluentforms_use_parameter($field, $key, $not_as = '', $type = 'string') {
+
+	if(!isset($field[$key])) {
+		return false;
+	}
+
+	if($type === 'string') {
+		if($field[$key] !== $not_as) {
+			return true;
+		}
+	}
+	elseif($type === 'bool') {
+		return true;
+	}
+
+	return false;
+}
+
 //returns back the player code based on the field data
 function ziggeofluentforms_get_player_code($field) {
 	$code = '';
 
 	//if video token is present, lets add it
-	if(isset($field['video_token']) && $field['video_token'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'video_token')) {
 		$code .= ' ziggeo-video="' . $field['video_token'] . '" ';
 	}
 
 	//if theme is set
-	if(isset($field['theme']) && $field['theme'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'theme')) {
 		$code .= ' ziggeo-theme="' . $field['theme'] . '" ';
 	}
 
 	//if theme color is set
-	if(isset($field['theme_color']) && $field['theme_color'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'theme_color')) {
 		$code .= ' ziggeo-themecolor="' . $field['theme_color'] . '" ';
 	}
 
 	//if width is set
-	if(isset($field['width']) && $field['width'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'width')) {
 		$code .= ' ziggeo-width="' . $field['width'] . '" ';
 	}
 
 	//if height is set
-	if(isset($field['height']) && $field['height'] !== '100%' && $field['height'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'height' && $field['height'] !== '100%')) {
 		$code .= ' ziggeo-height="' . $field['height'] . '" ';
 	}
 
 	//if popup is set
-	if(isset($field['popup']) && $field['popup'] === 'yes') {
+	if(ziggeofluentforms_use_parameter($field, 'popup', 'no')) { //No or yes
 		$code .= ' ziggeo-popup="true" ';
 
 		//if popup_width is set
-		if(isset($field['popup_width']) && $field['popup_width'] !== '') {
+		if(ziggeofluentforms_use_parameter($field, 'popup_width')) {
 			$code .= ' ziggeo-popup-width="' . $field['popup_width'] . '" ';
 		}
 
 		//if popup_height is set
-		if(isset($field['popup_height']) && $field['popup_height'] !== '') {
+		if(ziggeofluentforms_use_parameter($field, 'popup_height')) {
 			$code .= ' ziggeo-popup-height="' . $field['popup_height'] . '" ';
 		}
 	}
 
 	//if effect profile is present
-	if(isset($field['effect_profiles']) && $field['effect_profiles'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'effect_profiles')) {
 		$code .= ' ziggeo-effect-profile="' . $field['effect_profiles'] . '" ';
 	}
 
 	//if video profile is present
-	if(isset($field['video_profile']) && $field['video_profile'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'video_profile')) {
 		$code .= ' ziggeo-video-profile="' . $field['video_profile'] . '" ';
 	}
 
 	//if client auth is present
-	if(isset($field['client_auth']) && $field['client_auth'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'client_auth')) {
 		$code .= ' ziggeo-client-auth="' . $field['client_auth'] . '" ';
 	}
 
 	//if client auth is present
-	if(isset($field['server_auth']) && $field['server_auth'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'server_auth')) {
 		$code .= ' ziggeo-server-auth="' . $field['server_auth'] . '" ';
 	}
 
@@ -76,98 +94,98 @@ function ziggeofluentforms_get_recorder_code($field) {
 	$code = '';
 
 	//if theme is set
-	if(isset($field['theme'])) {
+
+	if(ziggeofluentforms_use_parameter($field, 'theme')) {
 		$code .= ' ziggeo-theme="' . $field['theme'] . '" ';
 	}
 
 	//if theme color is set
-	if(isset($field['theme_color'])) {
+	if(ziggeofluentforms_use_parameter($field, 'theme_color')) {
 		$code .= ' ziggeo-themecolor="' . $field['theme_color'] . '" ';
 	}
 
 	//if width is set
-	if(isset($field['width'])) {
+	if(ziggeofluentforms_use_parameter($field, 'width')) {
 		$code .= ' ziggeo-width="' . $field['width'] . '" ';
 	}
 
 	//if height is set
-	if(isset($field['height']) && $field['height'] !== '100%') {
+	if(ziggeofluentforms_use_parameter($field, 'height') && $field['height'] !== '100%') {
 		$code .= ' ziggeo-height="' . $field['height'] . '" ';
 	}
 
 	//if popup is set
-	if(isset($field['popup'])) {
-		$code .= ' ziggeo-height="' . $field['height'] . '" ';
+	if(ziggeofluentforms_use_parameter($field, 'popup', 'no')) {
+		$code .= ' ziggeo-popup="' . $field['popup'] . '" ';
 
 		//if popup_width is set
-		if(isset($field['popup_width'])) {
+		if(ziggeofluentforms_use_parameter($field, 'popup_width')) {
 			$code .= ' ziggeo-popup-width="' . $field['popup_width'] . '" ';
 		}
 
 		//if popup_height is set
-		if(isset($field['popup_height'])) {
+		if(ziggeofluentforms_use_parameter($field, 'popup_height')) {
 			$code .= ' ziggeo-popup-height="' . $field['popup_height'] . '" ';
 		}
 	}
 
 	//if faceoutline is set
-	if(isset($field['faceoutline'])) {
+	if(ziggeofluentforms_use_parameter($field, 'faceoutline', 'no')) {
 		$code .= ' ziggeo-faceoutline="true" ';
 	}
 
-
+	if(ziggeofluentforms_use_parameter($field, 'recording_width')) {
 	//if recording_width is set
-	if(isset($field['recording_width'])) {
 		$code .= ' ziggeo-recordingwidth="' . $field['recording_width'] . '" ';
 	}
 
 	//if recording_height is set
-	if(isset($field['recording_height'])) {
+	if(ziggeofluentforms_use_parameter($field, 'recording_height')) {
 		$code .= ' ziggeo-recordingheight="' . $field['recording_height'] . '" ';
 	}
 
 	//if timelimit is set
-	if(isset($field['recording_time_max'])) {
+	if(ziggeofluentforms_use_parameter($field, 'recording_time_max')) {
 		$code .= ' ziggeo-timelimit="' . $field['recording_time_max'] . '" ';
 	}
 
 	//if mintimelimit is set
-	if(isset($field['recording_time_min'])) {
+	if(ziggeofluentforms_use_parameter($field, 'recording_time_min')) {
 		$code .= ' ziggeo-mintimelimit="' . $field['recording_time_min'] . '" ';
 	}
 
 	//if countdown is set
-	if(isset($field['recording_countdown'])) {
+	if(ziggeofluentforms_use_parameter($field, 'recording_countdown')) {
 		$code .= ' ziggeo-countdown="' . $field['recording_countdown'] . '" ';
 	}
 
 	//if recordings (number of allowed recordings) is set
-	if(isset($field['recording_amount'])) {
+	if(ziggeofluentforms_use_parameter($field, 'recording_amount')) {
 		$code .= ' ziggeo-recordings="' . $field['recording_amount'] . '" ';
 	}
 
 	//if effect profile is present
-	if(isset($field['effect_profiles'])) {
+	if(ziggeofluentforms_use_parameter($field, 'effect_profiles')) {
 		$code .= ' ziggeo-effect-profile="' . $field['effect_profiles'] . '" ';
 	}
 
 	//if video profile is present
-	if(isset($field['video_profile'])) {
+	if(ziggeofluentforms_use_parameter($field, 'video_profile')) {
 		$code .= ' ziggeo-video-profile="' . $field['video_profile'] . '" ';
 	}
 
 	//if meta profile is present
-	if(isset($field['meta_profile'])) {
+	if(ziggeofluentforms_use_parameter($field, 'meta_profile')) {
 		$code .= ' ziggeo-meta-profile="' . $field['meta_profile'] . '" ';
 	}
 
 	//if client auth is present
-	if(isset($field['client_auth'])) {
+	if(ziggeofluentforms_use_parameter($field, 'client_auth')) {
 		$code .= ' ziggeo-client-auth="' . $field['client_auth'] . '" ';
 	}
 
 	//if client auth is present
-	if(isset($field['server_auth'])) {
+	if(ziggeofluentforms_use_parameter($field, 'server_auth')) {
 		$code .= ' ziggeo-server-auth="' . $field['server_auth'] . '" ';
 	}
 
@@ -182,40 +200,51 @@ function ziggeofluentforms_get_videowall_code($field) {
 	//Walls are processed on backend and entire code is placed on the front page, unlike the player and recorder which are processed by JavaScript.
 	$wall = '[ziggeovideowall ';
 
-	if($field['design'] !== '') {
+	if(ziggeofluentforms_use_parameter($field, 'design')) {
 		$wall .=	'wall_design="' . $field['design'] . '" ';
 	}
-	if($field['videos_per_page'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'videos_per_page')) {
 		$wall .=	'videos_per_page="' . $field['videos_per_page'] . '" ';
 	}
-	if($field['videos_to_show'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'videos_to_show')) {
 		$wall .=	'videos_to_show="' . $field['videos_to_show'] . '" ';
 	}
-	if($field['message'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'message')) {
 		$wall .=	'message="' . $field['message'] . '" ';
 	}
-	if($field['no_videos'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'no_videos')) {
 		$wall .=	'on_no_videos="' . $field['no_videos'] . '" ';
 	}
-	if($field['show_videos'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'show_videos')) {
 		$wall .=	'show_videos="' . $field['show_videos'] . '" ';
 	}
-	if($field['show'] === 'yes') {
+
+	if(ziggeofluentforms_use_parameter($field, 'show', 'no')) {
 		$wall .=	'show="true" ';
 	}
-	if($field['autoplay'] === 'yes') {
+
+	if(ziggeofluentforms_use_parameter($field, 'autoplay', 'no')) {
 		$wall .=	'autoplay="true" ';
 	}
-	if($field['title'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'title')) {
 		$wall .=	'title="' . $field['title'] . '" ';
 	}
-	if($field['videowidth'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'videowidth')) {
 		$wall .=	'video_width="' . $field['videowidth'] . '" ';
 	}
-	if($field['videoheight'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'videoheight')) {
 		$wall .=	'video_height="' . $field['videoheight'] . '" ';
 	}
-	if($field['template_name'] !== '') {
+
+	if(ziggeofluentforms_use_parameter($field, 'template_name')) {
 		$wall .=	'template_name="' . $field['template_name'] . '" ';
 	}
 

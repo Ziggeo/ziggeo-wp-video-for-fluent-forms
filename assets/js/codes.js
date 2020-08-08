@@ -95,7 +95,7 @@
 	function ziggeofluentformsSaveToken() {
 		ZiggeoWP.hooks.set('ziggeofluentforms_verified', 'ziggeofluentformsSaveToken',
 			function(data) {
-				data.save_to_element = data.value_prepared;
+				data.save_to_element.value = data.value_prepared;
 			});
 	}
 
