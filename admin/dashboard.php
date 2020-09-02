@@ -31,21 +31,21 @@ defined('ABSPATH') or die();
 
 			// The type of data that is captured once the video is recorded
 			add_settings_field('ziggeofluentforms_captured_content',
-								__('Choose the data that is saved once video is recorded', 'ziggeofluentforms'),
-								'ziggeofluentforms_g_captured_content',
-								'ziggeofluentforms',
-								'ziggeofluentforms_section_hooks');
+			                    __('Choose the data that is saved once video is recorded', 'ziggeofluentforms'),
+			                    'ziggeofluentforms_g_captured_content',
+			                    'ziggeofluentforms',
+			                    'ziggeofluentforms_section_hooks');
 
 	});
 
 	add_action('admin_menu', function() {
 		if(function_exists('ziggeo_p_add_addon_submenu')) {
 			ziggeo_p_add_addon_submenu(array(
-				'page_title'	=> 'Ziggeo Video for Fluent Forms',		//page title
-				'menu_title'	=> 'Ziggeo Video for Fluent Forms',		//menu title
-				'capability'	=> 'manage_options',					//min capability to view
-				'slug'			=> 'ziggeofluentforms',					//menu slug
-				'callback'		=> 'ziggeofluentforms_show_form')		//function
+				'page_title'    => 'Ziggeo Video for Fluent Forms',     //page title
+				'menu_title'    => 'Ziggeo Video for Fluent Forms',     //menu title
+				'capability'    => 'manage_options',                    //min capability to view
+				'slug'          => 'ziggeofluentforms',                 //menu slug
+				'callback'      => 'ziggeofluentforms_show_form')       //function
 			);
 		}
 		else {
@@ -55,7 +55,7 @@ defined('ABSPATH') or die();
 				<div class="error notice">
 					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Ziggeo Video For Fluent Forms) to work properly!', 'ziggeofluentforms' ); ?></p>
 				</div>
-  				<?php
+				<?php
 			});
 		}
 	}, 12);
