@@ -134,9 +134,7 @@
 						}
 
 						//Create tags for the video
-						ZiggeoApi.Videos.update(data.embedding_object.get("video"), {
-							tags: _tags
-						});
+						ziggeo_app.videos.update(data.embedding_object.get("video"), { tags: _tags });
 					}
 				}
 			});
@@ -186,9 +184,7 @@
 						//We do not want to touch custom data that was there previosuly, so we either use one or the other.
 
 						//Create tags for the video
-						ZiggeoApi.Videos.update(data.embedding_object.get("video"), {
-							data: prepared_data
-						});
+						ziggeo_app.videos.update(data.embedding_object.get("video"), { data: prepared_data });
 					}
 				}
 			});

@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
 Tested up to: 5.4.2
-Stable tag: 1.3
+Stable tag: 1.4
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,11 +87,14 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
+= 1.4 =
+* Improvement: Changed the API calls to use V2 flavor only.
+
+== Changelog ==
+
 = 1.3 =
 * Fixed: The recorder would not properly fill out the form field with token, causing the form to not collect the token.
 * Fixed: The recorder body would not be properly built making some of the options utilized even when they are turned off.
-
-== Changelog ==
 
 = 1.2 =
 * Added dynamic custom data handling. Allows you to pick up other fields on the form as your custom data.
