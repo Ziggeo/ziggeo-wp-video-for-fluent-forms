@@ -39,13 +39,25 @@ defined('ABSPATH') or die();
 	});
 
 	add_action('admin_menu', function() {
-		ziggeo_p_add_addon_submenu(array(
-			'page_title'	=> 'Ziggeo Video for Fluent Forms',		//page title
-			'menu_title'	=> 'Ziggeo Video for Fluent Forms',		//menu title
-			'capability'	=> 'manage_options',					//min capability to view
-			'slug'			=> 'ziggeofluentforms',					//menu slug
-			'callback'		=> 'ziggeofluentforms_show_form')		//function
-		);
+		if(function_exists('ziggeo_p_add_addon_submenu')) {
+			ziggeo_p_add_addon_submenu(array(
+				'page_title'	=> 'Ziggeo Video for Fluent Forms',		//page title
+				'menu_title'	=> 'Ziggeo Video for Fluent Forms',		//menu title
+				'capability'	=> 'manage_options',					//min capability to view
+				'slug'			=> 'ziggeofluentforms',					//menu slug
+				'callback'		=> 'ziggeofluentforms_show_form')		//function
+			);
+		}
+		else {
+			add_action( 'admin_notices', function() {
+
+				?>
+				<div class="error notice">
+					<p><?php _e( 'Please install <a href="https://wordpress.org/plugins/ziggeo/">Ziggeo plugin</a>. It is required for this plugin (Ziggeo Video For Fluent Forms) to work properly!', 'ziggeofluentforms' ); ?></p>
+				</div>
+  				<?php
+			});
+		}
 	}, 12);
 
 

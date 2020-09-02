@@ -89,6 +89,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 = 1.4 =
 * Improvement: Changed the API calls to use V2 flavor only.
+* Improvement: Made Dashboard page creation for settings only work if the Ziggeo core plugin is installed with newer version supporting the call, helping avoid hidden error if it is not.
 
 == Changelog ==
 
