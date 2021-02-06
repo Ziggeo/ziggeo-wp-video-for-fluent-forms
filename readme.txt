@@ -3,7 +3,7 @@ Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
 Tested up to: 5.6
-Stable tag: 1.4
+Stable tag: 1.4.1
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,12 +87,15 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
+= 1.4.1 =
+* Fixed: Theme color setting was not respected. With the fix, it is now working right.
+
+== Changelog ==
+
 = 1.4 =
 * Improvement: Changed the API calls to use V2 flavor only.
 * Improvement: Made Dashboard page creation for settings only work if the Ziggeo core plugin is installed with newer version supporting the call, helping avoid hidden error if it is not.
 * Improvement: Added a check to make sure core plugin is available instead of the behavior so far where it would just silently stop loading the files.
-
-== Changelog ==
 
 = 1.3 =
 * Fixed: The recorder would not properly fill out the form field with token, causing the form to not collect the token.

@@ -100,8 +100,8 @@ function ziggeofluentforms_get_recorder_code($field) {
 	}
 
 	//if theme color is set
-	if(ziggeofluentforms_use_parameter($field, 'theme_color')) {
-		$code .= ' ziggeo-themecolor="' . $field['theme_color'] . '" ';
+	if(ziggeofluentforms_use_parameter($field, 'themecolor')) {
+		$code .= ' ziggeo-themecolor="' . $field['themecolor'] . '" ';
 	}
 
 	//if width is set
