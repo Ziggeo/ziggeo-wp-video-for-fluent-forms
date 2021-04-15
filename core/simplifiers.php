@@ -85,6 +85,93 @@ function ziggeofluentforms_get_player_code($field) {
 		$code .= ' ziggeo-server-auth="' . $field['server_auth'] . '" ';
 	}
 
+	//if subtitles should be used
+	if(ziggeofluentforms_use_parameter($field, 'audio-transcription-as-subtitles', 'no')) {
+		$code .= ' ziggeo-audio-transcription-as-subtitles="' . $field['audio-transcription-as-subtitles'] . '" ';
+	}
+
+	//if fullscreen should be disabled
+	if(ziggeofluentforms_use_parameter($field, 'nofullscreen', 'no')) {
+		$code .= ' ziggeo-nofullscreen="' . $field['nofullscreen'] . '" ';
+	}
+
+	//if duration of video should be shown upfront
+	if(ziggeofluentforms_use_parameter($field, 'showduration', 'no')) {
+		$code .= ' ziggeo-showduration="' . $field['showduration'] . '" ';
+	}
+
+	//if player settings should be shown
+	if(ziggeofluentforms_use_parameter($field, 'showsettings', 'yes')) {
+		$code .= ' ziggeo-showsettings="' . $field['showsettings'] . '" ';
+	}
+
+	//if airplay is to be supported
+	if(ziggeofluentforms_use_parameter($field, 'airplay', 'no')) {
+		$code .= ' ziggeo-airplay="' . $field['airplay'] . '" ';
+	}
+
+	//if PiP is to be supported
+	if(ziggeofluentforms_use_parameter($field, 'allowpip', 'no')) {
+		$code .= ' ziggeo-allowpip="' . $field['allowpip'] . '" ';
+	}
+
+	//if chromecast is to be supported
+	if(ziggeofluentforms_use_parameter($field, 'chromecast', 'no')) {
+		$code .= ' ziggeo-chromecast="' . $field['chromecast'] . '" ';
+	}
+
+	//if pause should be disabled
+	if(ziggeofluentforms_use_parameter($field, 'disablepause', 'no')) {
+		$code .= ' ziggeo-disablepause="' . $field['disablepause'] . '" ';
+	}
+
+	//if seeking should be disabled
+	if(ziggeofluentforms_use_parameter($field, 'disableseeking', 'no')) {
+		$code .= ' ziggeo-disableseeking="' . $field['disableseeking'] . '" ';
+	}
+
+	//if initial seek is set
+	if(ziggeofluentforms_use_parameter($field, 'initialseek', '')) {
+		$code .= ' ziggeo-initialseek="' . $field['initialseek'] . '" ';
+	}
+
+	//if media loop is enabled
+	if(ziggeofluentforms_use_parameter($field, 'loop', 'no')) {
+		$code .= ' ziggeo-loop="' . $field['loop'] . '" ';
+	}
+
+	//if playlist loop is enabled
+	if(ziggeofluentforms_use_parameter($field, 'loopall', 'no')) {
+		$code .= ' ziggeo-loopall="' . $field['loopall'] . '" ';
+	}
+
+	//if playback on mobile is fullscreen
+	if(ziggeofluentforms_use_parameter($field, 'playfullscreenonmobile', 'no')) {
+		$code .= ' ziggeo-playfullscreenonmobile="' . $field['playfullscreenonmobile'] . '" ';
+	}
+
+	//if player should be a playlist
+	if(ziggeofluentforms_use_parameter($field, 'playlist', '')) {
+		$code .= ' ziggeo-playlist="' . $field['playlist'] . '" ';
+	}
+
+	//if player should be played only when visible
+	if(ziggeofluentforms_use_parameter($field, 'playwhenvisible', 'no')) {
+		$code .= ' ziggeo-playwhenvisible="' . $field['playwhenvisible'] . '" ';
+	}
+
+	//if we should prevent all interaction
+	if(ziggeofluentforms_use_parameter($field, 'preventinteraction', 'no')) {
+		$code .= ' ziggeo-preventinteraction="' . $field['preventinteraction'] . '" ';
+	}
+
+	//if volume is set
+	if(ziggeofluentforms_use_parameter($field, 'volume', '')) {
+		//This is needed because we accept 0 to 1 and we want to make it easy to set, randing from 0 to 100.
+		$field['volume'] = ($field['volume'] / 100);
+		$code .= ' ziggeo-volume="' . $field['volume'] . '" ';
+	}
+
 	//Lets return it
 	return $code;
 }
@@ -134,8 +221,78 @@ function ziggeofluentforms_get_recorder_code($field) {
 		$code .= ' ziggeo-faceoutline="true" ';
 	}
 
-	if(ziggeofluentforms_use_parameter($field, 'recording_width')) {
+	//if we allow file uploads
+	if(ziggeofluentforms_use_parameter($field, 'allowupload', 'no')) {
+		$code .= ' ziggeo-allowupload="true" ';
+	}
+
+	//if we allow recording from camera
+	if(ziggeofluentforms_use_parameter($field, 'allowrecord', 'no')) {
+		$code .= ' ziggeo-allowrecord="true" ';
+	}
+
+	//if we want screen capture to be made
+	if(ziggeofluentforms_use_parameter($field, 'allowscreen', 'no')) {
+		$code .= ' ziggeo-allowscreen="true" ';
+	}
+
+	//if both camera and screen are allowed to be captured together
+	if(ziggeofluentforms_use_parameter($field, 'allowmultistreams', 'no')) {
+		$code .= ' ziggeo-allowmultistreams="true" ';
+
+		//if the additional screen can be dragged around
+		if(ziggeofluentforms_use_parameter($field, 'multistreamdraggable', 'no')) {
+			$code .= ' ziggeo-multistreamdraggable="true" ';
+		}
+
+		//if the additional video stream height is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreamminheight')) {
+			$code .= ' ziggeo-addstreamminheight="' . $field['addstreamminheight'] . '" ';
+		}
+
+		//if the additional stream width is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreamminwidth')) {
+			$code .= ' ziggeo-addstreamminwidth="' . $field['addstreamminwidth'] . '" ';
+		}
+
+		//if the heigh of the additional stream is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreampositionheight')) {
+			$code .= ' ziggeo-addstreampositionheight="' . $field['addstreampositionheight'] . '" ';
+		}
+
+		//if the width of the additional stream is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreampositionwidth')) {
+			$code .= ' ziggeo-addstreampositionwidth="' . $field['addstreampositionwidth'] . '" ';
+		}
+
+		//if the additional stream position on x-axis is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreampositionx')) {
+			$code .= ' ziggeo-addstreampositionx="' . $field['addstreampositionx'] . '" ';
+		}
+
+		//if the additional stream position on y-axis is set
+		if(ziggeofluentforms_use_parameter($field, 'addstreampositiony')) {
+			$code .= ' ziggeo-addstreampositiony="' . $field['addstreampositiony'] . '" ';
+		}
+
+		//if the additional stream should be proportional
+		if(ziggeofluentforms_use_parameter($field, 'addstreamproportional', 'no')) {
+			$code .= ' ziggeo-addstreamproportional="true" ';
+		}
+	}
+
+	//if the camera should be flipped (left is left right is right)
+	if(ziggeofluentforms_use_parameter($field, 'flip-camera', 'no')) {
+		$code .= ' ziggeo-flip-camera="true" ';
+	}
+
+	//if the screen should be flipped 
+	if(ziggeofluentforms_use_parameter($field, 'flipscreen', 'no')) {
+		$code .= ' ziggeo-flipscreen="true" ';
+	}
+
 	//if recording_width is set
+	if(ziggeofluentforms_use_parameter($field, 'recording_width')) {
 		$code .= ' ziggeo-recordingwidth="' . $field['recording_width'] . '" ';
 	}
 
@@ -187,6 +344,24 @@ function ziggeofluentforms_get_recorder_code($field) {
 	//if client auth is present
 	if(ziggeofluentforms_use_parameter($field, 'server_auth')) {
 		$code .= ' ziggeo-server-auth="' . $field['server_auth'] . '" ';
+	}
+
+	//if client auth is present
+	if(ziggeofluentforms_use_parameter($field, 'server_auth')) {
+		$code .= ' ziggeo-server-auth="' . $field['server_auth'] . '" ';
+	}
+
+	//The transcript language to be set
+	if(ziggeofluentforms_use_parameter($field, 'transcript-language', '')) {
+		//No need to set the defaults
+		if($field['transcript-language'] !== 'en-US') {
+			$code .= ' ziggeo-transcript-language="' . $field['transcript-language'] . '" ';
+		}
+	}
+
+	//If the audio test is to be madatory or not
+	if(ziggeofluentforms_use_parameter($field, 'audio-test-mandatory', 'no')) {
+		$code .= ' ziggeo-audio-test-mandatory="' . $field['audio-test-mandatory'] . '" ';
 	}
 
 	//Lets return it

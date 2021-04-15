@@ -42,6 +42,20 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 				'popup_width'              => '',
 				'popup_height'             => '',
 				'faceoutline'              => 'no',
+				'allowupload'              => 'yes',
+				'allowrecord'              => 'yes',
+				'allowscreen'              => 'no',
+				'allowmultistreams'        => 'no',
+				'multistreamdraggable'     => 'no',
+				'addstreamminheight'       => 95,
+				'addstreamminwidth'        => 120,
+				'addstreampositionheight'  => 95,
+				'addstreampositionwidth'   => 120,
+				'addstreampositionx'       => 5,
+				'addstreampositiony'       => 5,
+				'addstreamproportional'    => 'yes',
+				'flip-camera'              => 'yes',
+				'flipscreen'               => 'yes',
 
 				'recording_width'          => '',
 				'recording_height'         => '',
@@ -54,6 +68,8 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 				'meta_profile'             => '',
 				'client_auth'              => '',
 				'server_auth'              => '',
+				'transcript-language'      => 'en-US',
+				'audio-test-mandatory'     => 'no',
 
 				'video_title'              => '',
 				'video_description'        => '',
@@ -115,6 +131,20 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			'popup_width',
 			'popup_height',
 			'faceoutline',
+			'allowupload',
+			'allowrecord',
+			'allowscreen',
+			'allowmultistreams',
+			'multistreamdraggable',
+			'addstreamminheight',
+			'addstreamminwidth',
+			'addstreampositionheight',
+			'addstreampositionwidth',
+			'addstreampositionx',
+			'addstreampositiony',
+			'addstreamproportional',
+			'flip-camera',
+			'flipscreen',
 
 			'label',
 			'admin_field_label',
@@ -223,6 +253,156 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 						'value' => 'no'
 					]
 				]
+			],
+			'allowupload'              => [
+				'template'  => 'radio',
+				'label'     => 'Do you want to enable upload option?',
+				'help_text' => 'Uploading of video is great option if someone already has a perfect video ready on their device.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'allowrecord'              => [
+				'template'  => 'radio',
+				'label'     => 'Do you want to enable video recording?',
+				'help_text' => 'In some cases you might prefer not to allow recording from camera to be done.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'allowscreen'              => [
+				'template'  => 'radio',
+				'label'     => 'Do you want to enable screen capture?',
+				'help_text' => 'This option adds a button that helps capture the screen.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'allowmultistreams'        => [
+				'template'  => 'radio',
+				'label'     => 'Allow multi stream recording',
+				'help_text' => 'This option allows you to capture both screen and camera together',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'multistreamdraggable'     => [
+				'template'  => 'radio',
+				'label'     => 'Allow dragging second stream?',
+				'help_text' => 'This option allows you make the additional streams draggable. Used only when allow multi stream option is enabled',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'addstreampositionx'  => [
+				'template'  => 'inputText',
+				'label'     => 'The x axis position of the additional stream',
+				'help_text' => 'Helps pre-set the position of the additional stream. Used only when allow multi stream option is enabled'
+			],
+			'addstreampositiony'  => [
+				'template'  => 'inputText',
+				'label'     => 'The y axis position of the additional stream',
+				'help_text' => 'Helps pre-set the position of the additional stream. Used only when allow multi stream option is enabled'
+			],
+			'addstreampositionheight'  => [
+				'template'  => 'inputText',
+				'label'     => 'The height of the additional stream',
+				'help_text' => 'Helps pre-set the height of the additional streams. Used only when allow multi stream option is enabled'
+			],
+			'addstreampositionwidth'  => [
+				'template'  => 'inputText',
+				'label'     => 'The width of the additional stream',
+				'help_text' => 'Helps pre-set the width of the additional streams. Used only when allow multi stream option is enabled'
+			],
+			'addstreamminheight'       => [
+				'template'  => 'inputText',
+				'label'     => 'The minimal height of the additional stream',
+				'help_text' => 'Helps pre-set the minimal height of the additional streams. Used only when allow multi stream option is enabled'
+			],
+			'addstreamminwidth'        => [
+				'template'  => 'inputText',
+				'label'     => 'The minimal width of the additional stream',
+				'help_text' => 'Helps pre-set the minimal width of the additional streams. Used only when allow multi stream option is enabled'
+			],
+			'addstreamproportional'    => [
+				'template'  => 'radio',
+				'label'     => 'Keep additional streams proportional',
+				'help_text' => 'Sometimes your width and heigh would distort the recording of smaller stream because of ratio available and you set. Using this option makes it ignore one of the pre-set options to make sure things look normal.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'flip-camera'              => [
+				'template'  => 'radio',
+				'label'     => 'Do you want to flip the camera?',
+				'help_text' => 'When you flip the camera and raise left arm, it shows as left to viewer. Standard way of recording makes you seem to raise right hand instead.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
+			],
+			'flipscreen'               => [
+				'template'  => 'radio',
+				'label'     => 'Do you want to flip the screen?',
+				'help_text' => 'Flip camera and flip screen work together when capturing multiple streams.',
+				'options'   => [
+					[
+						'label' => 'Yes',
+						'value' => 'yes'
+					],
+					[
+						'label' => 'No',
+						'value' => 'no'
+					]
+				]
 			]
 		];
 	}
@@ -247,6 +427,8 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			'meta_profile',
 			'client_auth',
 			'server_auth',
+			'transcript-language',
+			'audio-test-mandatory',
 
 			'video_title',
 			'video_description',
@@ -312,6 +494,16 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			'server_auth'              => [
 				'template'  => 'inputText',
 				'label'	    => 'Server Auth Token'
+			],
+			'transcript-language'      => [
+				'template'  => 'inputText',
+				'label'	    => 'Transcript Language',
+				'help_text' => 'If you are using meta profiles to create text from spoken words use this to set what language you want the transcript to be in'
+			],
+			'audio-test-mandatory'      => [
+				'template'  => 'radio',
+				'label'	    => 'Make audio test mandatory?',
+				'help_text' => 'Audio test is made before recording starts to make sure audio is available'
 			],
 
 			//Video data
