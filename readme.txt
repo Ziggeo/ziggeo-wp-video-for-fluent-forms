@@ -95,6 +95,7 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 = 1.5 =
 * Improvement: Added additional options for video recorder
 * Improvement: Added additional options for video player
+* Fixed: The parsing of templates did not work, with the new updates you can pull your templates properly to your form.
 
 = 1.4 =
 * Improvement: Changed the API calls to use V2 flavor only.

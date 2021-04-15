@@ -148,7 +148,7 @@ class Fluent_Forms_Ziggeo_Template extends BaseFieldManager {
 
 		$element_markup = '<input type="hidden" id="' . $field_id . '" ' . $this->buildAttributes($data['attributes'], $form) . ' >';
 
-		$_tmp_field = ziggeo_p_content_parse_templates( '[ziggeo ' . ziggeo_p_template_params($settings['template_name']));
+		$_tmp_field = ziggeo_p_content_parse_templates( array('[ziggeo ' . $settings['template_name'] . ' ]'));
 
 		$element_markup .= ziggeo_p_integrations_field_add_custom_tag($_tmp_field, 'data-id="' . $field_id . '"' . ' data-is-ff="true" ');
 
