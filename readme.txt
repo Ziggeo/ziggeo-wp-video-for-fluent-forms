@@ -26,7 +26,7 @@ If your answers are "true" or "yes" then you want this plugin! Utilize all of th
 Playback and recording added to forms with no development required
 Simple Drag-and-drop integration of Ziggeo to your Fluent Forms
 It features various embedding types, Video Player, Camera Recorder, Screen Recorder, combo recorder, playlists and much more ;)
-Native integration, clean imlpementation and great support
+Native integration, clean implementation and great support
 
 == Screenshots ==
 
