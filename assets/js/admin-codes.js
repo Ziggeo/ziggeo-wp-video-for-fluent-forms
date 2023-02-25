@@ -35,6 +35,11 @@
 		//grab the reference to the sections wrapper
 		var _wrapper = document.getElementsByClassName('sidebar_elements_wrapper')[0];
 
+		if(typeof _wrapper === 'undefined') {
+			// Support for newer versions
+			_wrapper = document.getElementsByClassName('option-fields-section')[0].parentElement;
+		}
+
 		//Create our own section
 		var _section = document.createElement('div');
 		_section.className = 'option-fields-section';

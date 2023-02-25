@@ -586,22 +586,18 @@ class Fluent_Forms_Video_Recorder extends BaseFieldManager {
 			ziggeofluentforms_get_recorder_code($settings) .
 			'></ziggeorecorder>';
 
+		// Support for Lazyload
+		if(!defined('ZIGGEO_FOUND')) {
+			define('ZIGGEO_FOUND', true);
+		}
+
+		echo ziggeo_p_get_lazyload_activator();
+
+		if(!defined('ZIGGEO_FOUND_POST')) {
+			define('ZIGGEO_FOUND_POST', true);
+		}
+
 		$html = $this->buildElementMarkup($element_markup, $data, $form);
-		//$this->pushScripts($data, $form);
 		echo apply_filters('fluenform_rendering_field_html_' . $elementName, $html, $data, $form);
 	}
-
-	//Adds the scripts that might need to be added to the frontend that might be connected to the form.
-	/*private function pushScripts($data, $form) {
-		add_action('wp_footer', function () use ($data, $form) {
-			?>
-			<script type="text/javascript">
-				jQuery(document).ready(function ($) {
-					//Do some action
-					
-				});
-			</script>
-			<?php
-		}, 9999);
-	}*/
 }

@@ -2,8 +2,8 @@
 Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
-Tested up to: 5.8.3
-Stable tag: 1.5
+Tested up to: 6.1.1
+Stable tag: 1.6
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,8 +87,10 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.4.1 =
-* Fixed: Theme color setting was not respected. With the fix, it is now working right.
+= 1.6 =
+* Fixed: Added change to the form builder integration to support changes in the newer updates
+* Improvement: Added support for lazyload feature of our WP Core plugin
+* Improvement: Added support for the v2 version of the templates provided by core plugin
 
 == Changelog ==
 
@@ -96,6 +98,9 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 * Improvement: Added additional options for video recorder
 * Improvement: Added additional options for video player
 * Fixed: The parsing of templates did not work, with the new updates you can pull your templates properly to your form.
+
+= 1.4.1 =
+* Fixed: Theme color setting was not respected. With the fix, it is now working right.
 
 = 1.4 =
 * Improvement: Changed the API calls to use V2 flavor only.

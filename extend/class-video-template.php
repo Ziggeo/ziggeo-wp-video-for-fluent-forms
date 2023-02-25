@@ -148,9 +148,36 @@ class Fluent_Forms_Ziggeo_Template extends BaseFieldManager {
 
 		$element_markup = '<input type="hidden" id="' . $field_id . '" ' . $this->buildAttributes($data['attributes'], $form) . ' >';
 
-		$_tmp_field = ziggeo_p_content_parse_templates( array('[ziggeo ' . $settings['template_name'] . ' ]'));
+		$template_exists = ziggeo_p_template_exists($settings['template_name']); // false when not existing
 
-		$element_markup .= ziggeo_p_integrations_field_add_custom_tag($_tmp_field, 'data-id="' . $field_id . '"' . ' data-is-ff="true" ');
+		if(is_string($template_exists)) {
+			$_tmp_field = ziggeo_p_template_parser( '[ziggeotemplate ' . $settings['template_name'] . ' ]');
+
+			// Support for template v2
+			if(isset($_tmp_field['status']) && $_tmp_field['status'] == 'success') {
+				$_tmp_field = $_tmp_field['result'];
+			}
+
+			$element_markup .= ziggeo_p_integrations_field_add_custom_tag($_tmp_field, 'data-id="' . $field_id . '"' . ' data-is-ff="true" ');
+		}
+		else {
+			$element_markup .= '<!--
+				ziggeo-error: template code should be show here.
+				reason: ' . ((isset($template_exists['result'])) ? $template_exists['result'] : 'Template not found' ).
+				'solution: Please see: https://ziggeo.com/docs/integrations/wordpress/ for more info.
+			-->';
+		}
+
+		// Support for Lazyload
+		if(!defined('ZIGGEO_FOUND')) {
+			define('ZIGGEO_FOUND', true);
+		}
+
+		echo ziggeo_p_get_lazyload_activator();
+
+		if(!defined('ZIGGEO_FOUND_POST')) {
+			define('ZIGGEO_FOUND_POST', true);
+		}
 
 		$html = $this->buildElementMarkup($element_markup, $data, $form);
 		echo apply_filters('fluenform_rendering_field_html_' . $elementName, $html, $data, $form);
