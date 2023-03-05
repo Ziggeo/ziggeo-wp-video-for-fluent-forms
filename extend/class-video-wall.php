@@ -284,15 +284,7 @@ class Fluent_Forms_Video_Wall extends BaseFieldManager {
 		$element_markup .= ziggeo_p_integrations_field_add_custom_tag($_tmp_field, 'data-id="' . $field_id . '"' . ' data-is-ff="true" ');
 
 		// Support for Lazyload
-		if(!defined('ZIGGEO_FOUND')) {
-			define('ZIGGEO_FOUND', true);
-		}
-
-		echo ziggeo_p_get_lazyload_activator();
-
-		if(!defined('ZIGGEO_FOUND_POST')) {
-			define('ZIGGEO_FOUND_POST', true);
-		}
+		echo ziggeofluentforms_lazyload_support();
 
 		$html = $this->buildElementMarkup($element_markup, $data, $form);
 

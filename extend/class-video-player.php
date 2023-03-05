@@ -525,15 +525,7 @@ class Fluent_Forms_Video_Player extends BaseFieldManager {
 		$element_markup .= '<ziggeoplayer ' . ziggeofluentforms_get_player_code($settings) . ' ' . 'data-id="' . $field_id . '"' . ' data-is-ff="true"' . '></ziggeoplayer>';
 
 		// Support for Lazyload
-		if(!defined('ZIGGEO_FOUND')) {
-			define('ZIGGEO_FOUND', true);
-		}
-
-		echo ziggeo_p_get_lazyload_activator();
-
-		if(!defined('ZIGGEO_FOUND_POST')) {
-			define('ZIGGEO_FOUND_POST', true);
-		}
+		echo ziggeofluentforms_lazyload_support();
 
 		$html = $this->buildElementMarkup($element_markup, $data, $form);
 
