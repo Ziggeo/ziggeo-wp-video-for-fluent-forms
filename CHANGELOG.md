@@ -3,6 +3,9 @@ This file contains the change log info for the `Ziggeo - Fluent Forms` Bridge pl
 
 =======
 
+= 1.6.1 =
+* Fixed: Changed the way lazyload is used to account for usage of plugin when the core plugin is not on 3.0
+
 = 1.6 =
 * Fixed: Added change to the form builder integration to support changes in the newer updates
 * Improvement: Added support for lazyload feature of our WP Core plugin

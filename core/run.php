@@ -85,6 +85,12 @@ function ziggeofluentforms_include_plugin_files() {
 		require_once(ZIGGEOFLUENTFORMS_ROOT_PATH . 'extend/class-video-wall.php');
 		new Fluent_Forms_Video_Wall();
 	}
+
+	if(is_admin()) {
+		include_once(ZIGGEOFLUENTFORMS_ROOT_PATH . 'admin/dashboard.php');
+		include_once(ZIGGEOFLUENTFORMS_ROOT_PATH . 'admin/plugins.php');
+		include_once(ZIGGEOFLUENTFORMS_ROOT_PATH . 'admin/validation.php');
+	}
 }
 
 //We add all of the hooks we need
@@ -115,7 +121,7 @@ function ziggeofluentforms_run() {
 		//check the Fluent Forms version
 		version_compare(ziggeofluentforms_get_version(), '3.5.6') >= 0) {
 
-		if(ziggeo_integration_is_enabled('ziggeo-video-for-wpforms')) {
+		if(ziggeo_integration_is_enabled('ziggeo-video-for-fluent-forms')) {
 			ziggeofluentforms_init();
 			return true;
 		}
