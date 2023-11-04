@@ -15,9 +15,15 @@
 /////////////////////////////////////////////////
 
 	jQuery( document ).ready(function() {
+		ziggeofluentformsInit();
+	});
+
+	function ziggeofluentformsInit() {
 
 		//Check if the ziggeo_app was defined
 		if(typeof ziggeo_app === 'undefined') {
+
+			setTimeout(ziggeofluentformsInit, 1000);
 			return false;
 		}
 
@@ -72,7 +78,7 @@
 		ziggeofluentformsSaveToken();
 		ziggeofluentformsAddCustomData();
 		ziggeofluentformsAddCustomTags();
-	});
+	};
 
 	// Just a simple function to check for signs of this embedding actually being part of Fluent Forms form
 	function ziggeofluentformsIsOfForm(embedding) {

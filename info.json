@@ -1,14 +1,14 @@
 {
 	"wp": {
 		"required": "3.0.1",
-		"tested": "6.2",
+		"tested": "6.3.2",
 		"repo_url": "",
 		"alternative_repo_url": "https://github.com/Ziggeo/ziggeo-wp-video-for-fluent-forms"
 	},
 	"plugin": {
 		"name": "ziggeo-video-for-fluent-forms",
 		"title": "Ziggeo Video for Fluent Forms",
-		"version": "1.6.2",
+		"version": "1.7",
 		"author": "Ziggeo",
 		"logo": "https://raw.githubusercontent.com/Ziggeo/ziggeo-wp-video-for-fluent-forms/master/assets/images/logo.png",
 		"contributors": "oliverfriedmann, baned, carloscsz409",

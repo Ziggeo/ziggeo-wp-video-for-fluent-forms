@@ -11,6 +11,7 @@ defined('ABSPATH') or die();
 
 
 function ziggeofluentforms_validate($input) {
+
 	$options = ziggeofluentforms_get_plugin_options();
 
 	if(isset($input['capture_content'])) {
@@ -20,6 +21,7 @@ function ziggeofluentforms_validate($input) {
 			$input['capture_content'] === 'video_token') {
 			$options['capture_content'] = $input['capture_content'];
 		}
+
 	}
 
 	return $options;

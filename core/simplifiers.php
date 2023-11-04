@@ -441,7 +441,7 @@ function ziggeofluentforms_get_videowall_code($field) {
 
 //Function that helps with our preferences
 function ziggeofluentforms_get_plugin_options($specific = null) {
-	$options = get_option('ziggeogravityforms');
+	$options = get_option('ziggeofluentforms');
 
 	$defaults = array(
 		'capture_content'	=> 'embed_wp'
@@ -498,6 +498,9 @@ function ziggeofluentforms_lazyload_support() {
 				solution: This is OK. Since the lazyload was not present in earlier versions no additional output is required
 			-->';
 		}
+	}
+	else {
+		$result = '';
 	}
 
 	return $result;

@@ -2,8 +2,8 @@
 Contributors: oliverfriedmann, baned, carloscsz409, natashacalleia
 Tags: ziggeo, video, video field, form builder, video form, Fluent Forms
 Requires at least: 3.0.1
-Tested up to: 6.2
-Stable tag: 1.6.2
+Tested up to: 6.3.2
+Stable tag: 1.7
 Requires PHP: 5.2.4
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -87,8 +87,9 @@ Please go to our [WordPress forum](https://support.ziggeo.com/hc/en-us/community
 
 == Upgrade Notice ==
 
-= 1.6.2 =
-* Fixed: Admin Settings pages are now available
+= 1.7 =
+* Fixed: Admin Settings: fixed a typo causing settings to not be read out properly making it seem like they are not being changed (while they were). This also caused them to not be applied properly.
+* Fixed: In some cases the Fluent Form support was not initilized. Added a re-try capability so that it is available as soon as possible.
 
 == Changelog ==
 

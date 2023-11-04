@@ -3,6 +3,9 @@ This file contains the change log info for the `Ziggeo - Fluent Forms` Bridge pl
 
 =======
 
+= 1.6.2 =
+* Fixed: Admin Settings pages are now available
+
 = 1.6.1 =
 * Fixed: Changed the way lazyload is used to account for usage of plugin when the core plugin is not on 3.0
 

@@ -1,6 +1,6 @@
 <?php
 
-//Output the info about the gravity forms that can help us with the form
+//Output the info about the fluent forms that can help us with the form
 add_action('ziggeo_add_to_ziggeowp_object', function() {
 	$options = ziggeofluentforms_get_plugin_options();
 	$format = '';
